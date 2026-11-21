@@ -1,0 +1,52 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "type": "object",
+    "required": ["station", "name", "date", "units", "values", "attributes", "source"],
+    "properties": {
+      "station": { "type": "string", "description": "U.S. GHCN-Daily station ID." },
+      "name": { "type": ["string", "null"], "description": "Station name supplied by NOAA, when available." },
+      "date": { "type": "string", "description": "Observation date as published by NOAA." },
+      "units": { "type": "string", "description": "Requested NOAA unit system." },
+      "values": {
+        "type": "object",
+        "description": "Numeric values or null, keyed by GHCN-Daily element code.",
+        "additionalProperties": { "type": ["number", "null"] }
+      },
+      "attributes": {
+        "type": "object",
+        "description": "Published flags keyed by GHCN-Daily element code. Missing flags are null. An observation withheld by the source filter has excludedBySource set to true.",
+        "additionalProperties": {
+          "type": ["object", "null"],
+          "properties": {
+            "measurementFlag": { "type": ["string", "null"] },
+            "qualityFlag": { "type": ["string", "null"] },
+            "sourceFlag": { "type": "string" },
+            "excludedBySource": { "type": "boolean" }
+          }
+        }
+      },
+      "source": { "type": "string", "description": "NOAA NCEI GHCN-Daily attribution." }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": ["date", "station", "name", "units", "values", "attributes", "source"]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "date": { "label": "Observation date", "format": "text" },
+          "station": { "label": "Station ID", "format": "text" },
+          "name": { "label": "Station name", "format": "text" },
+          "units": { "label": "Units", "format": "text" },
+          "values": { "label": "Values", "format": "object" },
+          "attributes": { "label": "Flags", "format": "object" },
+          "source": { "label": "Source", "format": "text" }
+        }
+      }
+    }
+  }
+}

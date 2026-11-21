@@ -1,0 +1,93 @@
+[
+  {
+    "STATION": "USW00094728",
+    "PRCP_ATTRIBUTES": ",,1,2400",
+    "PRCP": "0.0",
+    "AWND_ATTRIBUTES": ",,1",
+    "NAME": "NY CITY CENTRAL PARK, NY US",
+    "DATE": "2026-10-01",
+    "AWND": "1.2",
+    "TMAX": "24.4",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "18.3",
+    "TMIN_ATTRIBUTES": ",,1"
+  },
+  {
+    "STATION": "USW00094728",
+    "PRCP_ATTRIBUTES": "T,,1,2400",
+    "PRCP": "0.0",
+    "AWND_ATTRIBUTES": ",,1",
+    "NAME": "NY CITY CENTRAL PARK, NY US",
+    "DATE": "2026-10-02",
+    "AWND": "2.2",
+    "TMAX": "28.3",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "20.0",
+    "TMIN_ATTRIBUTES": ",,1"
+  },
+  {
+    "STATION": "USW00094728",
+    "PRCP_ATTRIBUTES": "T,,1,2400",
+    "PRCP": "0.0",
+    "AWND_ATTRIBUTES": ",,1",
+    "NAME": "NY CITY CENTRAL PARK, NY US",
+    "DATE": "2026-10-03",
+    "AWND": "2.1",
+    "TMAX": "21.1",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "15.0",
+    "TMIN_ATTRIBUTES": ",,1"
+  },
+  {
+    "STATION": "USW00094728",
+    "PRCP_ATTRIBUTES": ",,1,2400",
+    "PRCP": "3.8",
+    "AWND_ATTRIBUTES": ",,1",
+    "NAME": "NY CITY CENTRAL PARK, NY US",
+    "DATE": "2026-10-04",
+    "AWND": "2.3",
+    "TMAX": "16.7",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "13.3",
+    "TMIN_ATTRIBUTES": ",,1"
+  },
+  {
+    "STATION": "USW00094728",
+    "PRCP_ATTRIBUTES": ",,1,2400",
+    "PRCP": "0.0",
+    "AWND_ATTRIBUTES": ",,1",
+    "NAME": "NY CITY CENTRAL PARK, NY US",
+    "DATE": "2026-10-05",
+    "AWND": "2.9",
+    "TMAX": "20.0",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "12.2",
+    "TMIN_ATTRIBUTES": ",,1"
+  },
+  {
+    "STATION": "USW00094728",
+    "PRCP_ATTRIBUTES": ",,1,2400",
+    "PRCP": "0.0",
+    "AWND_ATTRIBUTES": ",,1",
+    "NAME": "NY CITY CENTRAL PARK, NY US",
+    "DATE": "2026-10-06",
+    "AWND": "2.0",
+    "TMAX": "15.6",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "8.9",
+    "TMIN_ATTRIBUTES": ",,1"
+  },
+  {
+    "STATION": "USW00094728",
+    "PRCP_ATTRIBUTES": ",,1,2400",
+    "PRCP": "0.0",
+    "AWND_ATTRIBUTES": ",,1",
+    "NAME": "NY CITY CENTRAL PARK, NY US",
+    "DATE": "2026-10-07",
+    "AWND": "1.6",
+    "TMAX": "18.3",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "8.9",
+    "TMIN_ATTRIBUTES": ",,1"
+  }
+]

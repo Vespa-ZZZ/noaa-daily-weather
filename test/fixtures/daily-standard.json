@@ -1,0 +1,27 @@
+[
+  {
+    "WSF2": "17.0",
+    "WSF5_ATTRIBUTES": ",,1",
+    "STATION": "USW00094789",
+    "WSF5": "23.0",
+    "SNOW": "0.0",
+    "PRCP_ATTRIBUTES": ",,1,2400",
+    "SNOW_ATTRIBUTES": ",,1,2400",
+    "PRCP": "0.23",
+    "WDF2_ATTRIBUTES": ",,1",
+    "AWND_ATTRIBUTES": ",,1",
+    "SNWD_ATTRIBUTES": ",,1,2400",
+    "SNWD": "0.0",
+    "NAME": "JFK INTERNATIONAL AIRPORT, NY US",
+    "DATE": "2026-10-04",
+    "WDF2": "   70",
+    "WDF5_ATTRIBUTES": ",,1",
+    "AWND": "9.62",
+    "WDF5": "   80",
+    "TMAX": "64",
+    "TMAX_ATTRIBUTES": ",,1",
+    "TMIN": "55",
+    "WSF2_ATTRIBUTES": ",,1",
+    "TMIN_ATTRIBUTES": ",,1"
+  }
+]

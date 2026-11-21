@@ -1,0 +1,14 @@
+{
+  "actorSpecification": 1,
+  "name": "noaa-daily-weather",
+  "title": "NOAA Daily Weather History",
+  "description": "Get historical daily weather observations and quality flags from NOAA NCEI by U.S. station ID, state, or coordinates.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "dockerfile": "../Dockerfile"
+}

@@ -1,0 +1,77 @@
+{
+  "title": "NOAA Daily Weather History",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "stations": {
+      "title": "Station IDs",
+      "type": "array",
+      "description": "Enter up to 10 GHCN-Daily station IDs starting with US, such as USW00023174. Use this field or station search.",
+      "editor": "stringList",
+      "items": { "type": "string", "pattern": "^US[A-Z0-9]{9}$", "minLength": 11, "maxLength": 11 },
+      "maxItems": 10,
+      "prefill": ["USW00023174"]
+    },
+    "stationSearch": {
+      "title": "Station search",
+      "type": "object",
+      "description": "Search NOAA's station metadata by two-letter U.S. state code (state), bounding box ([north, west, south, east] in bbox), or both. Search uses up to 10 matching stations. Clear Station IDs to use this field.",
+      "editor": "json",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "type": "string",
+          "title": "State code",
+          "description": "A two-letter uppercase U.S. state code, such as CA.",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "bbox": {
+          "type": "array",
+          "title": "Bounding box",
+          "description": "Four coordinate values in north, west, south, east order.",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "type": "number" }
+        }
+      }
+    },
+    "startDate": {
+      "title": "Start date",
+      "type": "string",
+      "description": "First observation date to include, in YYYY-MM-DD.",
+      "editor": "textfield",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "prefill": "2026-10-01"
+    },
+    "endDate": {
+      "title": "End date",
+      "type": "string",
+      "description": "Last observation date to include, in YYYY-MM-DD. Each daily observations request covers up to 366 days and 10 stations. Longer ranges are split into sequential requests.",
+      "editor": "textfield",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+      "prefill": "2026-10-07"
+    },
+    "dataTypes": {
+      "title": "Observation types",
+      "type": "array",
+      "description": "GHCN-Daily element codes. Defaults to TMAX, TMIN, PRCP, SNOW, SNWD, and AWND. See the README for additional supported elements.",
+      "editor": "select",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["TMAX", "TMIN", "PRCP", "SNOW", "SNWD", "AWND", "TAVG", "ADPT", "ASLP", "ASTP", "WDF2", "WDF5", "WSF2", "WSF5"]
+      },
+      "default": ["TMAX", "TMIN", "PRCP", "SNOW", "SNWD", "AWND"]
+    },
+    "units": {
+      "title": "Units",
+      "type": "string",
+      "description": "Unit system used by NOAA for output values.",
+      "editor": "select",
+      "enum": ["metric", "standard"],
+      "enumTitles": ["Metric", "U.S. customary"],
+      "default": "metric"
+    }
+  },
+  "required": ["startDate", "endDate"]
+}
