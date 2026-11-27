@@ -286,3 +286,29 @@ test('removes paths and following stack frames from error messages', () => {
     assert.equal(sanitize(`Cannot open '${path} with spaces'`), "Cannot open '<path>'");
     assert.equal(sanitize('Cannot open /tmp/actor/file'), 'Cannot open <path>');
 });
+
+test('prechecks the dataset item budget and allows non-PPE output', async () => {
+    for (const [isPayPerEvent, budget] of [[true, 1], [true, 0], [false, 0]]) {
+        const configureActor = (actor, records) => {
+            actor.getChargingManager = () => ({
+                getPricingInfo: () => ({ isPayPerEvent }),
+                calculateMaxEventChargeCountWithinLimit(event) {
+                    assert.equal(event, 'apify-default-dataset-item');
+                    return budget - records.length;
+                },
+            });
+        };
+        const rows = [];
+        let summary;
+        const actor = {
+            pushData: async (batch) => rows.push(...batch),
+            setValue: async (_, value) => { summary = value; },
+        };
+        configureActor(actor, rows);
+        const expected = isPayPerEvent ? budget : centralPark.length;
+        const count = await runActor(INPUT, { actor, fetchImpl: async () => Response.json(centralPark) });
+        assert.equal(count, expected);
+        assert.equal(rows.length, expected);
+        assert.equal(summary?.stopReason, isPayPerEvent ? 'spendingLimit' : undefined);
+    }
+});

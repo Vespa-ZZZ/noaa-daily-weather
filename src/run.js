@@ -1,4 +1,5 @@
 import { setTimeout as sleepDefault } from 'node:timers/promises';
+import { pushDataWithinLimit } from './charging.js';
 import { dataUrl, dateWindows, MAX_STATIONS, normalizeInput, parseDaily, parseSearch, searchUrl } from './noaa.js';
 
 const INTERVAL_MS = 2_200;
@@ -70,7 +71,14 @@ export async function runActor(input, {
     for (const window of dateWindows(query.startDate, query.endDate)) {
         const payload = await getJson(dataUrl(query, window), 'daily observations');
         const rows = parseDaily(payload, query, window);
-        if (rows.length > 0) await actor.pushData(rows);
+        if (rows.length === 0) continue;
+        const result = await pushDataWithinLimit(actor, rows);
+        if (result?.eventChargeLimitReached) {
+            total += result.chargedCount;
+            warn('Pay-per-event charge limit reached. Stopping dataset output.');
+            await actor.setValue?.('RUN_SUMMARY', { pushed: total, stopReason: 'spendingLimit' });
+            return total;
+        }
         total += rows.length;
     }
     if (total === 0) warn('NOAA returned no observations for the requested stations, dates, and data types.');
